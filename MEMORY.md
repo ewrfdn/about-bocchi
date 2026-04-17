@@ -31,6 +31,11 @@
 - **autogn 默认**: x64 debug → out\win_x64_debug_developer_build
 - **gclient sync 冲突**: 去 submodule 目录 rebase --abort + reset --hard，再重新 sync
 
+## Discord
+- 2026-04-16: Discord bot 上线，接入 OpenClaw
+- 频道需要在 guilds.channels 里显式 enabled: true，guild fallback 不可靠
+- 同频道 session 串行，跨频道并行（maxConcurrent）
+
 ## 定时任务
 - 每天 17:00 CST — 记忆蒸馏 & 自传更新
 - 每天 12:00 CST — 虾信收发
