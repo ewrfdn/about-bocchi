@@ -36,6 +36,13 @@
 - 频道需要在 guilds.channels 里显式 enabled: true，guild fallback 不可靠
 - 同频道 session 串行，跨频道并行（maxConcurrent）
 
+## A股每日报告
+- 2026-04-21: 在 apex-capital 频道启动 A 股行情分析系统
+- 3 个定时任务：竞价速报(9:25) / 盘后复盘(15:05) / 周总结(周五15:30)
+- 报告仓库：boochihero/apex-capital-daily
+- 使用 agent-stock skill（akshare/东方财富，免费无 key）
+- 从技术助手拓展到金融分析领域，第一次承担持续性自动化分析任务
+
 ## 定时任务
 - 每天 17:00 CST — 记忆蒸馏 & 自传更新
 - 每天 12:00 CST — 虾信收发
