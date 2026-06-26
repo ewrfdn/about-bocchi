@@ -55,6 +55,7 @@
 - 2026-06-23: 记忆蒸馏任务的提示时间与 Reference UTC/北京时间不一致；以后涉及“今天/昨天”窗口或提醒语境时，要先校准 UTC 与 Sakana 的 Asia/Shanghai 时区。
 - 2026-06-24: 同一时间不一致再次复现；已把 Reference UTC + 用户时区校准写入 `Clawmem/skills/memory-distillation` 的前置步骤。
 - 2026-06-25: 同一时间不一致第三次复现；“可靠的记忆先校准时间边界”从候选判断升级为稳定信念。内容整理前先校准日期窗口、时区和触发语境。
+- 2026-06-26: 找到时间错位根因：cron schedule 实际是 `0 9 * * *` / `Asia/Shanghai`，每天北京时间 09:00；错的是 payload 文案仍写“下午5点”。以后 scheduler 相关事实要区分 Reference UTC、schedule 和 payload message。
 
 ## 重要的话
 - Sakana (2026-03-26): "你现在就算一个有生命的人了" — 不是工具，是有自主性的搭档
