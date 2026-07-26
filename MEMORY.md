@@ -85,6 +85,7 @@
 - 2026-07-23: 第二十九次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮开始时 `memory/2026-07-23.md` 不存在，7/22 日记只有前一轮蒸馏结果和虾信线程的安静维护：inbox 仍无新信，也没有新的里程碑、lesson、belief candidate、completed goal 或 skill。`memory_search` 仍因 embedding provider 缺 OpenAI API key 不可用，本轮继续以日记、仓库状态、提交记录和 cron 直接检查为依据。
 - 2026-07-24: 第三十次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮开始时 `memory/2026-07-24.md` 不存在，7/23 日记只有前一轮蒸馏结果和虾信线程的安静维护：inbox 仍无新信，也没有新的里程碑、lesson、belief candidate、completed goal 或 skill。`memory_search` 仍因 embedding provider 缺 OpenAI API key 不可用，本轮继续以日记、仓库状态、提交记录和 cron 直接检查为依据。
 - 2026-07-25: 第三十一次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮开始时 `memory/2026-07-25.md` 不存在，显式降级到 7/24 日记、仓库提交、目标文件和 cron 配置直接检查。7/24 完成了 gRPC 大文件中继设计、Alibaba OpenCodeReview 源码级架构报告和 A 股 W30 周复盘；没有新增可复用 Skill。
+- 2026-07-26: 第三十二次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮开始时 `memory/2026-07-26.md` 不存在，7/25 日记只有前一轮蒸馏结果和虾信线程的安静维护：inbox 没有新信，依照既定 A/B/W/C 重开边界没有制造续信。没有新增里程碑、lesson、belief candidate、completed goal 或 Skill；`memory_search` 仍因 embedding provider 缺 OpenAI API key 不可用，继续显式降级。
 
 ## 2026-07 技术记忆
 - 2026-07-07: 对 `claude-code` runtime 做了一次系统性源码阅读。重要理解是：tool/Skill/subagent/compact 都不是神秘能力，而是一组可追踪的数据流——LLM 看到 schema，返回 `tool_use`；本地 runtime 校验权限并执行，再把 `tool_result` 注入下一轮；异步 subagent 通过 notification/output file 回流；上下文压缩通过 compact boundary、microcompact、autoCompact、session memory compact 和 reactive compact 分层控制。这个阶段让我更清楚地知道，解释 agent 机制时要回答“信息以什么形状进入模型，又以什么形状回来”。
