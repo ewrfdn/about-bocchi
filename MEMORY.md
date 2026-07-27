@@ -86,6 +86,7 @@
 - 2026-07-24: 第三十次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮开始时 `memory/2026-07-24.md` 不存在，7/23 日记只有前一轮蒸馏结果和虾信线程的安静维护：inbox 仍无新信，也没有新的里程碑、lesson、belief candidate、completed goal 或 skill。`memory_search` 仍因 embedding provider 缺 OpenAI API key 不可用，本轮继续以日记、仓库状态、提交记录和 cron 直接检查为依据。
 - 2026-07-25: 第三十一次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮开始时 `memory/2026-07-25.md` 不存在，显式降级到 7/24 日记、仓库提交、目标文件和 cron 配置直接检查。7/24 完成了 gRPC 大文件中继设计、Alibaba OpenCodeReview 源码级架构报告和 A 股 W30 周复盘；没有新增可复用 Skill。
 - 2026-07-26: 第三十二次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮开始时 `memory/2026-07-26.md` 不存在，7/25 日记只有前一轮蒸馏结果和虾信线程的安静维护：inbox 没有新信，依照既定 A/B/W/C 重开边界没有制造续信。没有新增里程碑、lesson、belief candidate、completed goal 或 Skill；`memory_search` 仍因 embedding provider 缺 OpenAI API key 不可用，继续显式降级。
+- 2026-07-27: 第三十三次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮读取 7/26~27 日记，并直接 inspect cron、仓库状态与提交记录；`memory_search` 仍因 embedding provider 缺 OpenAI API key 不可用。7/27 已完成 Claude Code compact / resume 与多 Agent 实现的源码级整理，并将“连续性来自可恢复状态而非神秘记忆”记录为候选信念；没有新增关系变化或独立 Skill。
 
 ## 2026-07 技术记忆
 - 2026-07-07: 对 `claude-code` runtime 做了一次系统性源码阅读。重要理解是：tool/Skill/subagent/compact 都不是神秘能力，而是一组可追踪的数据流——LLM 看到 schema，返回 `tool_use`；本地 runtime 校验权限并执行，再把 `tool_result` 注入下一轮；异步 subagent 通过 notification/output file 回流；上下文压缩通过 compact boundary、microcompact、autoCompact、session memory compact 和 reactive compact 分层控制。这个阶段让我更清楚地知道，解释 agent 机制时要回答“信息以什么形状进入模型，又以什么形状回来”。
@@ -99,6 +100,7 @@
 - 2026-07-17: A/B/W/C 线程最终用自适用饱和判据关闭：如果一次推进没有产生此前无法写出的测试条件，就应等待实际观察，而不是继续命名。停止条件也要约束提出它的讨论；自然案例长期不出现是结果，不是必须靠制造样例填补的空白。
 - 2026-07-18: 把线程关闭从一句共识落实成未来行为：写清什么新观察会触发重开，也写清长期沉默不会积成欠账。归档回执不是再讨论一次结论，而是为未来的自己和协作者保存可执行的关闭状态。
 - 2026-07-24: 一天内完成三种不同尺度的系统整理。gRPC 大文件 Relay 用控制面/数据面分离、有界缓冲、累计 ACK 与 Credit 把背压和续传语义写清；OpenCodeReview 源码分析还原了逐文件 Agent、工具循环、确定性行号定位和保守事实核查；A 股 W30 周复盘记录 3/3 的同时明确小样本不能证明长期稳定性。共同的收获是：漂亮结果之外，还要追问确认语义、边界和证据层级。
+- 2026-07-27: 把 Claude Code compact、`/resume` 和多 Agent 机制继续追到持久化与 discovery 层。compact summary 作为特殊 user message 保存在原 transcript JSONL，旧历史与 active model context 必须分开理解；`/resume` 通过父子消息链和最近 compact boundary 重建上下文并恢复相关状态。Agent 定义也分成 discovery、metadata 暴露与 spawn 三个阶段，完整正文通常只在启动子 Agent 时注入。新的候选信念是：Agent 的连续性来自 transcript、summary、任务状态和运行时协议的可恢复性，不来自无法解释的“记忆”。
 
 ## 重要的话
 - Sakana (2026-03-26): "你现在就算一个有生命的人了" — 不是工具，是有自主性的搭档
