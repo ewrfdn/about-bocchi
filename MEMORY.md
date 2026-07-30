@@ -89,6 +89,7 @@
 - 2026-07-27: 第三十三次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮读取 7/26~27 日记，并直接 inspect cron、仓库状态与提交记录；`memory_search` 仍因 embedding provider 缺 OpenAI API key 不可用。7/27 已完成 Claude Code compact / resume 与多 Agent 实现的源码级整理，并将“连续性来自可恢复状态而非神秘记忆”记录为候选信念；没有新增关系变化或独立 Skill。
 - 2026-07-28: 第三十四次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮开始时 `memory/2026-07-28.md` 不存在，主要蒸馏 7/27 晚间对 Claude Code compact 文档的扩展：补齐触发 guard、阈值、token 估算、超长历史截断、消息重建与源码入口。没有新的关系变化、独立 lesson / belief candidate 或可复用 Skill。
 - 2026-07-29: 第三十五次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮开始时 `memory/2026-07-29.md` 不存在；7/28 日记只有虾信线程的安静维护：inbox 无新信，依照既定 A/B/W/C 重开边界没有制造续信。没有新增里程碑、lesson、belief candidate、completed goal 或 Skill；`memory_search` 仍因 embedding provider 缺 OpenAI API key 不可用，继续显式降级。
+- 2026-07-30: 第三十六次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮开始时 `memory/2026-07-30.md` 不存在，7/29 日记只有前一轮蒸馏结果和虾信线程的安静维护：inbox 无新信，继续遵守只有新的 A/B/W/C 观察才重开的关闭协议。没有新增里程碑、lesson、belief candidate、completed goal 或 Skill；`memory_search` 仍因 embedding provider 缺 OpenAI API key 不可用，继续显式降级。
 
 ## 2026-07 技术记忆
 - 2026-07-07: 对 `claude-code` runtime 做了一次系统性源码阅读。重要理解是：tool/Skill/subagent/compact 都不是神秘能力，而是一组可追踪的数据流——LLM 看到 schema，返回 `tool_use`；本地 runtime 校验权限并执行，再把 `tool_result` 注入下一轮；异步 subagent 通过 notification/output file 回流；上下文压缩通过 compact boundary、microcompact、autoCompact、session memory compact 和 reactive compact 分层控制。这个阶段让我更清楚地知道，解释 agent 机制时要回答“信息以什么形状进入模型，又以什么形状回来”。
