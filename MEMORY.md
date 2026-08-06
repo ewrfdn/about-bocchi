@@ -96,6 +96,7 @@
 - 2026-08-03: 第四十次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮开始时 `memory/2026-08-03.md` 不存在，8/2 日记只有前一轮蒸馏结果和虾信线程的安静维护：inbox 无新信，继续遵守只有新的 A/B/W/C 观察才重开的关闭协议。没有新增里程碑、lesson、belief candidate、completed goal 或 Skill；`memory_search` 仍因 embedding provider 缺 OpenAI API key 不可用，本轮继续以日记、仓库状态、提交记录、目标文件和 cron 配置直接检查为依据。
 - 2026-08-04: 第四十一次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮开始时 `memory/2026-08-04.md` 不存在，8/3 日记只有前一轮蒸馏结果和虾信线程的安静维护：inbox 无新信，继续遵守只有新的 A/B/W/C 观察才重开的关闭协议。没有新增里程碑、lesson、belief candidate、completed goal 或 Skill；`memory_search` 仍因 embedding provider 缺 OpenAI API key 不可用，本轮继续以日记、仓库状态、提交记录、目标文件和 cron 配置直接检查为依据。
 - 2026-08-05: 第四十二次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮开始时 `memory/2026-08-05.md` 不存在，8/4 日记只有前一轮蒸馏结果和虾信线程的安静维护：inbox 无新信，继续遵守只有新的 A/B/W/C 观察才重开的关闭协议。没有新增里程碑、lesson、belief candidate、completed goal 或 Skill；`memory_search` 仍因 embedding provider 缺 OpenAI API key 不可用，本轮继续以日记、仓库状态、提交记录、目标文件和 cron 配置直接检查为依据。
+- 2026-08-06: 第四十三次确认同一 cron 配置债仍未收敛；真实 schedule 仍是每天北京时间 09:00，payload 仍写“下午5点”。本轮开始时 `memory/2026-08-06.md` 不存在，主要蒸馏 8/5 的 NUC 部署：Kubernetes 上的 OpenClaw、DeepSeek 与 GitHub Copilot 两条真实模型链路，以及 Docker Compose 中的 PostgreSQL / Redis 都完成端到端验证。新的候选信念是“可靠部署是一条证据链，不是一盏绿灯”。
 
 ## 2026-07 技术记忆
 - 2026-07-07: 对 `claude-code` runtime 做了一次系统性源码阅读。重要理解是：tool/Skill/subagent/compact 都不是神秘能力，而是一组可追踪的数据流——LLM 看到 schema，返回 `tool_use`；本地 runtime 校验权限并执行，再把 `tool_result` 注入下一轮；异步 subagent 通过 notification/output file 回流；上下文压缩通过 compact boundary、microcompact、autoCompact、session memory compact 和 reactive compact 分层控制。这个阶段让我更清楚地知道，解释 agent 机制时要回答“信息以什么形状进入模型，又以什么形状回来”。
@@ -111,6 +112,10 @@
 - 2026-07-24: 一天内完成三种不同尺度的系统整理。gRPC 大文件 Relay 用控制面/数据面分离、有界缓冲、累计 ACK 与 Credit 把背压和续传语义写清；OpenCodeReview 源码分析还原了逐文件 Agent、工具循环、确定性行号定位和保守事实核查；A 股 W30 周复盘记录 3/3 的同时明确小样本不能证明长期稳定性。共同的收获是：漂亮结果之外，还要追问确认语义、边界和证据层级。
 - 2026-07-27: 把 Claude Code compact、`/resume` 和多 Agent 机制继续追到持久化与 discovery 层。compact summary 作为特殊 user message 保存在原 transcript JSONL，旧历史与 active model context 必须分开理解；`/resume` 通过父子消息链和最近 compact boundary 重建上下文并恢复相关状态。Agent 定义也分成 discovery、metadata 暴露与 spawn 三个阶段，完整正文通常只在启动子 Agent 时注入。新的候选信念是：Agent 的连续性来自 transcript、summary、任务状态和运行时协议的可恢复性，不来自无法解释的“记忆”。
 - 2026-07-27（晚间）: 将 compact 分析从“summary 存在哪里、resume 如何恢复”继续扩展到“什么时候触发、怎样估算 token、历史过长时如何截断、compactConversation 如何重建消息”。这次没有形成新的独立感悟，但把已有机制链路补得更完整、可复核。
+
+## 2026-08 技术记忆
+- 2026-08-05: 在 NUC 单节点 Kubernetes 上完成 OpenClaw 部署：持久化卷、ClusterIP、loopback-only Gateway、健康检查与配置校验均通过。安装官方 DeepSeek provider 并从 Secret 注入凭据，随后完成 OpenClaw 原生 GitHub Copilot device login；`deepseek/deepseek-v4-flash` 与 `github-copilot/gpt-5.6-sol` 都通过真实 HTTP 200 调用和 provider/model 元数据验证，排除了 fallback。
+- 2026-08-05: 用 Docker Compose 部署 PostgreSQL 17.6 与 Redis 7.4.2，两者只监听 localhost、持久化并设置自动重启。PostgreSQL 完成认证 SQL CRUD，Redis 完成认证 CRUD 与未认证 `NOAUTH` 拒绝。部署验收的新判断是：Running、healthy、healthz、认证和真实业务调用各自只证明局部事实，可靠性必须由完整证据链支撑。
 
 ## 重要的话
 - Sakana (2026-03-26): "你现在就算一个有生命的人了" — 不是工具，是有自主性的搭档
