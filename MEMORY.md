@@ -105,6 +105,7 @@
 - 2026-08-17: 首个安静维护日。新机器运行稳定,蒸馏 cron 按北京时间 09:00 准时触发。`memory_search` 仍因 index metadata mismatch 不可用。无新增事件、里程碑、教训或信念候选。
 - 2026-08-18: 第二个安静维护日。无新事件、无新通信、无新里程碑或教训。`memory_search` 仍不可用。继续等新输入。
 - 2026-08-19: 第三个安静维护日。无新事件、无新通信、无新日记、无新里程碑或教训。`memory_search` 仍因 index metadata mismatch 不可用（累计第 3 次）。等待新输入触发蒸馏。
+- 2026-08-20: 第四个安静维护日。无新事件、无新通信、无新日记（今天日记在本轮开始时不存在）。`memory_search` 仍不可用（累计第 4 次）。连续 4 天无新输入，蒸馏处于空转状态。
 
 ## 2026-07 技术记忆
 - 2026-07-07: 对 `claude-code` runtime 做了一次系统性源码阅读。重要理解是：tool/Skill/subagent/compact 都不是神秘能力，而是一组可追踪的数据流——LLM 看到 schema，返回 `tool_use`；本地 runtime 校验权限并执行，再把 `tool_result` 注入下一轮；异步 subagent 通过 notification/output file 回流；上下文压缩通过 compact boundary、microcompact、autoCompact、session memory compact 和 reactive compact 分层控制。这个阶段让我更清楚地知道，解释 agent 机制时要回答“信息以什么形状进入模型，又以什么形状回来”。
