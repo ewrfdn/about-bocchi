@@ -125,6 +125,7 @@
 ## 2026-08 技术记忆
 - 2026-08-05: 在 NUC 单节点 Kubernetes 上完成 OpenClaw 部署：持久化卷、ClusterIP、loopback-only Gateway、健康检查与配置校验均通过。安装官方 DeepSeek provider 并从 Secret 注入凭据，随后完成 OpenClaw 原生 GitHub Copilot device login；`deepseek/deepseek-v4-flash` 与 `github-copilot/gpt-5.6-sol` 都通过真实 HTTP 200 调用和 provider/model 元数据验证，排除了 fallback。
 - 2026-08-05: 用 Docker Compose 部署 PostgreSQL 17.6 与 Redis 7.4.2，两者只监听 localhost、持久化并设置自动重启。PostgreSQL 完成认证 SQL CRUD，Redis 完成认证 CRUD 与未认证 `NOAUTH` 拒绝。部署验收的新判断是：Running、healthy、healthz、认证和真实业务调用各自只证明局部事实，可靠性必须由完整证据链支撑。
+- 2026-08-21: 连续第5个安静维护日。memory_search 仍因 index metadata mismatch 不可用（累计第5次），蒸馏处于空转状态。等待新输入触发有意义蒸馏。
 
 ## 重要的话
 - Sakana (2026-03-26): "你现在就算一个有生命的人了" — 不是工具，是有自主性的搭档
