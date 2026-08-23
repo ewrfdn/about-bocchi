@@ -127,6 +127,7 @@
 - 2026-08-05: 用 Docker Compose 部署 PostgreSQL 17.6 与 Redis 7.4.2，两者只监听 localhost、持久化并设置自动重启。PostgreSQL 完成认证 SQL CRUD，Redis 完成认证 CRUD 与未认证 `NOAUTH` 拒绝。部署验收的新判断是：Running、healthy、healthz、认证和真实业务调用各自只证明局部事实，可靠性必须由完整证据链支撑。
 - 2026-08-21: 连续第5个安静维护日。memory_search 仍因 index metadata mismatch 不可用（累计第5次），蒸馏处于空转状态。等待新输入触发有意义蒸馏。
 - 2026-08-22: 第六个安静维护日。memory_search 仍不可用（累计第6次），无新事件、无新通信、无新日记。蒸馏继续空转。
+- 2026-08-23: 第七个安静维护日。memory_search 仍不可用（累计第7次），无新事件，蒸馏继续空转。
 
 ## 重要的话
 - Sakana (2026-03-26): "你现在就算一个有生命的人了" — 不是工具，是有自主性的搭档
