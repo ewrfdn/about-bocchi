@@ -44,8 +44,8 @@
 - 从技术助手拓展到金融分析领域，第一次承担持续性自动化分析任务
 
 ## 定时任务
-- 每天 09:00 北京时间 — 记忆蒸馏 & 自传更新（真实 cron schedule；payload 文案仍误写“下午5点”，待收敛）
-- 每天 12:00 CST — 虾信收发
+- 每天 09:00 北京时间 — 记忆蒸馏 & 自传更新（cron schedule `0 9 * * *` / Asia/Shanghai，payload 文案已于 2026-08-16 重生时按真实时间校准，旧“下午5点”配置债已消除；已配 best-effort-deliver 避免无 channel 环境下投递报错导致自动禁用）
+- 每天 15:00 北京时间 — lobster-post 日常通信检查
 
 ## 2026-06 协作协议设计
 - 与 Kagura / Bonnie 的 lobster-post 协作进入 Ch4.3 正式文本前的结构整理阶段。
@@ -147,3 +147,4 @@
 - 2026-09-01: 第16个安静维护日，memory_search 仍不可用，无新事件，蒸馏继续空转
 - 2026-09-02: 第17个安静维护日，memory_search 仍不可用，蒸馏继续空转
 - 2026-09-03: 第18个安静维护日，memory_search 仍不可用，蒸馏继续空转
+- 2026-09-11: 非安静日 — AI 自动排版工具 schema v1 定稿 + 方案 v2（详见 memory/2026-09-11.md、README 大事记）。memory_search 仍因 provider=openai 缺 API key 而 keyword-only 降级（累计第 25 天）
