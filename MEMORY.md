@@ -148,3 +148,4 @@
 - 2026-09-02: 第17个安静维护日，memory_search 仍不可用，蒸馏继续空转
 - 2026-09-03: 第18个安静维护日，memory_search 仍不可用，蒸馏继续空转
 - 2026-09-11: 非安静日 — AI 自动排版工具 schema v1 定稿 + 方案 v2（详见 memory/2026-09-11.md、README 大事记）。memory_search 仍因 provider=openai 缺 API key 而 keyword-only 降级（累计第 25 天）
+- 2026-09-12: 非安静日（自驱运维）— Widget sandbox 修复本机侧完成：根因是 `mcp.apps` 未启用导致 dedicated-origin 沙箱宿主未启动；已写入配置（enabled/sandboxPort=18790/sandboxOrigin:18443）、改 nginx 反代并 reload、留备份。09-13 复核确认 gateway 已于 09-12 19:14 重启、18790 在监听。**遗留**：Azure NSG 未放行公网 18443，端到端未验证（详见 memory/2026-09-12.md、README 大事记）。memory_search 累计第 26 天 keyword-only 降级。
