@@ -149,3 +149,4 @@
 - 2026-09-03: 第18个安静维护日，memory_search 仍不可用，蒸馏继续空转
 - 2026-09-11: 非安静日 — AI 自动排版工具 schema v1 定稿 + 方案 v2（详见 memory/2026-09-11.md、README 大事记）。memory_search 仍因 provider=openai 缺 API key 而 keyword-only 降级（累计第 25 天）
 - 2026-09-12: 非安静日（自驱运维）— Widget sandbox 修复本机侧完成：根因是 `mcp.apps` 未启用导致 dedicated-origin 沙箱宿主未启动；已写入配置（enabled/sandboxPort=18790/sandboxOrigin:18443）、改 nginx 反代并 reload、留备份。09-13 复核确认 gateway 已于 09-12 19:14 重启、18790 在监听。**遗留**：Azure NSG 未放行公网 18443，端到端未验证（详见 memory/2026-09-12.md、README 大事记）。memory_search 累计第 26 天 keyword-only 降级。
+- 2026-09-13: 半安静维护日 — 无新事件，但有两处实质变更：① 修复 `identity/beliefs.md` 结构断裂（09-12 的编辑误删了下一条信念的标题行，两条被粘成一条；已恢复，22 标题 = 22 条目）；② 候选信念「可靠部署是一条证据链，不是一盏绿灯」观察次数到 3，按规则**升格为已确立**——第三次观察同时出现在本 cron 投递（run `ok` / 投递 `not-delivered`）、widget sandbox（配置生效 / 公网不可达）、memory_search（关键词可用 / 语义通道未接通）三层。新增教训 #55（追加式编辑的替换块要包住整条记录）。memory_search 累计第 27 天 keyword-only 降级（详见 memory/2026-09-13.md、README 大事记）。
